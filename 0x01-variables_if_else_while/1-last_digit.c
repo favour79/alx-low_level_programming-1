@@ -3,10 +3,9 @@
 #include <time.h>
 
 /**
- * main - Entry point
- * Description: The last digit
+ * main - Prints last digit numbers greater than 5, less than 6, or 0.
  *
- * Retrun: Always 0
+ * Return: Always 0
  */
 int main(void)
 {
