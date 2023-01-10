@@ -1,47 +1,33 @@
-#include "main.h"
 #include <stdlib.h>
 
 /**
- * string_nconcat - a function that concatenates two strings.
+ * _strdup - Return pointer to a new string that duplicates given string,
+ * allocate mem w/ malloc
+ * @str: String to duplicate
  *
- * @s1: first char
- * @s2: secound char
- * @n: unsigned int
- *
- * Return: If the function fails, it should return NULL
+ * Return: Pointer to new string, NULL if fails to make memory
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
-{
-	unsigned int x, y, z;
-	char *s;
 
-	if (s1 == NULL)
+char *_strdup(char *str)
+{
+	char *nstr;
+	unsigned int i, len;
+
+	if (str == NULL)
+	return (NULL);
+	i = len = 0;
+	while (str[len] != '\0')
 	{
-		x = 0;
+	len++;
 	}
-	else
+	len++;
+	nstr = malloc(len * sizeof(*str));
+	if (nstr == NULL)
+	return (NULL);
+	while (i <= len)
 	{
-		for (x = 0; s1[x]; ++x)
-		;
+	nstr[i] = str[i];
+	i++;
 	}
-	if (s2 == NULL)
-	{
-		y = 0;
-	}
-	else
-	{
-		for (y = 0; s2[y]; ++y)
-		;
-	}
-	if (y > n)
-		y = n;
-	s = malloc(sizeof(char) * (x + y + 1));
-	if (s == NULL)
-		return (NULL);
-	for (z = 0; z < x; z++)
-		s[z] = s1[z];
-	for (z = 0; z < y; z++)
-		s[z + x] = s2[z];
-	s[x + y] = '\0';
-	return (s);
+	return (nstr);
 }
