@@ -1,28 +1,28 @@
 #include "main.h"
+
 /**
- * _strspn - Entry point
- * @s: input
- * @accept: input
- * Return: Always 0 (Success)
+ * _strspn - returns the number of bytes in initial segment of s
+ *
+ * @s: pointer to sting whose byte length wil be calculed
+ * @accept: accepted bytes
+ *
+ * Return: returns accept
  */
+
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int n = 0;
-	int r;
+	char *p;
+	char *a;
+	int j = 0;
 
-	while (*s)
+	for (p = s; *p != '\0'; ++p)
 	{
-	for (r = 0; accept[r]; r++)
-	{
-	if (*s == accept[r])
-	{
-	n++;
-	break;
+		for (a = accept; *a != '\0'; ++a)
+			if (*p == *a)
+			break;
+		if (*a == '\0')
+			return (j);
+		++j;
 	}
-	else if (accept[r + 1] == '\0')
-	return (n);
-	}
-	s++;
-	}
-	return (n);
+	return (j);
 }

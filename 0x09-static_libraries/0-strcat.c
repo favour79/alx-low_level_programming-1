@@ -1,26 +1,41 @@
 #include "main.h"
 
 /**
- * _strcat - concat 2 string
- * @dest:char
- * @src:char
- * Return:char
+ * lenstr - calculates the lenght of a string
+ *
+ * @str: string whose length is to be calculated
+ *
+ * Return: length of string
  */
+
+int lenstr(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		;
+	return (i);
+}
+
+/**
+ * _strcat - concatenates two strings overriding the null byte
+ *
+ * @dest: destination string
+ * @src: source string
+ *
+ * Return: resulting string at dest
+ */
+
 char *_strcat(char *dest, char *src)
 {
-	char *s = dest;
+	int i;
+	int dest_len = lenstr(dest);
+	int src_len = lenstr(src);
 
-	while (*dest != '\0')
+	for (i = 0; i < src_len; i++)
 	{
-	dest++;
+	dest[dest_len + i] = src[i];
 	}
 
-	while (*src != '\0')
-	{
-	*dest = *src;
-	dest++;
-	src++;
-	}
-	*dest = '\0';
-	return (s);
+	return (dest);
 }
